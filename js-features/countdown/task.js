@@ -6,5 +6,6 @@ let reduceTimer = setInterval(function() {
     } else if (!wasAlert) {
         window.alert('Вы победили в конкурсе!');
         wasAlert = true;
+        clearInterval(reduceTimer);
     }
 }, 1000)
