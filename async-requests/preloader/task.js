@@ -9,14 +9,14 @@ xhr.addEventListener('readystatechange', () => {
         if (xhr.status == 200) {
             const valutes = Object.values((JSON.parse(xhr.responseText)).response.Valute);
             valutes.forEach(valute => {
-                let dateValute = document.createElement('div');
-                dateValute.className = "item";
-                dateValute.innerHTML = `
-                    <div class="item__code"> ${valute.CharCode} </div>
-                    <div class="item__value"> ${valute.Value} </div>
+                let valuteItem = document.createElement('div');
+                valuteItem.className = "item";
+                valuteItem.innerHTML = `
+                    <div class="item__code">${valute.CharCode}</div>
+                    <div class="item__value">${valute.Value}</div>
                     <div class="item__currency">руб.</div>
                     `;
-                valuesList.appendChild(dateValute);
+                valuesList.appendChild(valuteItem);
             });
         } else {
             console.error("HTTP request failed", xhr.status, xhr.responseText);
