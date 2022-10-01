@@ -3,8 +3,8 @@ const tasksInput = document.querySelector(".tasks__input");
 const tasksList = document.getElementById("tasks__list");
 
 inputForm[0].addEventListener('submit', event => {
+    event.preventDefault();
     if (tasksInput.value.trim() != "") {
-        event.preventDefault();
         addTask(tasksInput.value);
         tasksInput.value = "";
     }
@@ -24,7 +24,7 @@ function addTask(task) {
     });
 };
 
-function alternativeAddTask(task) {
+function alternativeAddTask(task) {     //не используется
     let newTask = document.createElement('div');
     newTask.classList.add('task');
     let newTaskTitle = document.createElement('div');
