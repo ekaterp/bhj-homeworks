@@ -1,16 +1,12 @@
-const interests = document.querySelectorAll(".interest");
-let checked = false;
-interests.forEach(interest => {
-    interest.onchange = () => {
-        const childInterests = interest.querySelector("ul").querySelectorAll(".interest__check");
-        checked = !checked;
-        childInterests.forEach(childInterest => {
-            if (checked === false) {
-                childInterest.checked = false
-            } else {
-                childInterest.checked = true
-            }
-        });
-    };
-});
+const interests = Array.from(document.querySelector("ul").children);
 
+interests.forEach(interest => {
+    interest.addEventListener("change", (e) => {
+        e.preventDefault();
+        e.target.closest('li').querySelectorAll('ul input[type=checkbox]').forEach( item => {
+            if (!item.checked) {
+                item.checked = e.target.checked;
+            }
+          })
+    })
+});
