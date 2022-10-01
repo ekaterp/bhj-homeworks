@@ -14,7 +14,8 @@ haveTooltip.forEach((hasTooltip) => {
                 return false;
             }
         }
-        hasTooltip.insertAdjacentHTML('afterBegin', tooltip);
+        
+        hasTooltip.insertAdjacentHTML('beforeBegin', tooltip);
+        indexLastTooltip = haveTooltip.indexOf(hasTooltip);
     };
-    indexLastTooltip = haveTooltip.indexOf(hasTooltip);
 });
