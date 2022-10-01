@@ -70,7 +70,7 @@ class Autocomplete {
   getMatches( text ) {
     let mass = [];
     Array.from(this.input.options).forEach (element => {
-      if (element.text.includes(text) && text.trim().length != 0) {
+      if (element.text.includes(text)) {
         mass.push({ text: element.text, value: element.value })
       }
     });
