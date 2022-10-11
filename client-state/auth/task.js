@@ -8,6 +8,7 @@ if (localStorage.getItem('userid') == 'undefined') {
     userId.textContent = localStorage.userId;
     signIn.classList.remove('signin_active');
     userId.closest('.welcome').classList.add('welcome_active');
+    form.reset();
 }
 
 form.addEventListener('submit', (e) => {
@@ -23,16 +24,18 @@ form.addEventListener('submit', (e) => {
     const url = form.getAttribute('action');
 
     let xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
     xhr.open('POST', url);
     xhr.send(formData);
 
     xhr.addEventListener('load', () => {
-        let answer = JSON.parse(xhr.responseText);
-        localStorage.userId = answer.user_id;
-        if (answer.success) {
-            userId.textContent = answer.user_id;
+        localStorage.userId = xhr.response.user_id;
+        console.log(xhr.response);
+        if (xhr.response.success) {
+            userId.textContent = xhr.response.user_id;
             signIn.classList.remove('signin_active');
             userId.closest('.welcome').classList.add('welcome_active');
+            form.reset();
         } else {
             alert('Неверный логин/пароль')
         }
